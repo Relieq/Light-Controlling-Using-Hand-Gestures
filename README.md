@@ -123,11 +123,12 @@ The table below describes the defined hand gestures and their corresponding ligh
 
 | Class | Action              | Hand Gesture                                  |
 |-------|---------------------|-----------------------------------------------|
-| 0     | Turn All Lights Off | ![Turn Off Gesture](./img/turn_off.jpg)       |
-| 1     | Turn Light 1 On     | ![Light 1 Gesture](./img/light1.jpg)          |
-| 2     | Turn Light 2 On     | ![Light 2 Gesture](./img/light2.jpg)          |
-| 3     | Turn Light 3 On     | ![Light 3 Gesture](./img/light3.jpg)          |
-| 4     | Turn All Lights On  | ![Turn On Gesture](./img/turn_on.jpg)         |
+| 0     | Turn All Lights Off | <img src="./sign_imgs/turn_off.jpg" width="200" alt="Turn Off Gesture"> |
+| 1     | Turn Light 1 On     | <img src="./sign_imgs/light1.jpg" width="200" alt="Light 1 Gesture"> |
+| 2     | Turn Light 2 On     | <img src="./sign_imgs/light2.jpg" width="200" alt="Light 2 Gesture"> |
+| 3     | Turn Light 3 On     | <img src="./sign_imgs/light3.jpg" width="200" alt="Light 3 Gesture"> |
+| 4     | Turn All Lights On  | <img src="./sign_imgs/turn_on.jpg" width="200" alt="Turn On Gesture"> |
+
 
 ## Hardware Devices
 
@@ -135,17 +136,17 @@ To implement the physical light control system, you will need the following devi
 
 *   **4-Channel Modbus RTU RS485 Relay Module**:
 
-    ![4-Channel Relay Module Modbus RTU RS485](./img/4-Channel_Relay_Module_Modbus_RTU_RS485.jpeg)
+    <img src="./img/4-Channel_Relay_Module_Modbus_RTU_RS485.jpeg" width="400" alt="4-Channel Relay Module Modbus RTU RS485">
 *   **USB to RS485 Converter**:
 
-    ![USB-RS485 and Lamp Setup for Modbus Relay Module](./img/USB-RS485_and_Lamp_Setup_for_Modbus_Relay_Module.jpeg)
+    <img src="./img/USB-RS485_and_Lamp_Setup_for_Modbus_Relay_Module.jpeg" width="400" alt="USB-RS485 and Lamp Setup for Modbus Relay Module">
 *   **Lights and other electrical devices** (optional).
 
 ## Project Implementation Process
 
 The project implementation process is divided into three main steps:
 
-![Project Implementation Steps](./img/project_implementation_steps.jpeg)
+<img src="./img/project_implementation_steps.jpeg" width="600" alt="Project Implementation Steps">
 
 *   **Step 0 (Data Preparation)**: Collect hand gesture data using MediaPipe Gesture Recognizer and save it to CSV files.
 *   **Step 1 (Model Training)**: Build and train an MLP model for gesture classification.
