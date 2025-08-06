@@ -2,65 +2,65 @@
 
 ![Intro Image](./img/intro_img.jpeg)
 
-Dự án "Light Controlling Using Hand Gestures" phát triển một hệ thống cho phép người dùng điều khiển đèn thông qua các cử chỉ tay. Dự án này kết hợp công nghệ nhận diện cử chỉ của Google (MediaPipe Gesture Recognizer) với một mô hình học sâu (Deep Learning Model) để tạo ra một hệ thống nhận diện cử chỉ tay và thực thi các lệnh tương ứng với các cử chỉ đã được định nghĩa trước. Hệ thống có khả năng điều khiển đèn trong môi trường mô phỏng hoặc các thiết bị đèn thực tế thông qua module relay Modbus RTU RS485.
+The "Light Controlling Using Hand Gestures" project develops a system that allows users to control lights through hand gestures. This project combines Google's gesture recognition technology (MediaPipe Gesture Recognizer) with a Deep Learning Model to create a system that recognizes hand gestures and executes commands corresponding to predefined gestures. The system can control lights in a simulated environment or real lighting devices via a Modbus RTU RS485 relay module.
 
-## Tính năng chính
+## Key Features
 
-*   **Nhận diện cử chỉ tay thời gian thực**: Sử dụng MediaPipe Gesture Recognizer để phát hiện và trích xuất các điểm mốc (landmarks) của bàn tay từ webcam.
-*   **Mô hình học sâu**: Một mô hình MLP (Multi-Layer Perceptron) được huấn luyện để phân loại các cử chỉ tay thành các hành động điều khiển đèn cụ thể.
-*   **Điều khiển đèn linh hoạt**: Hỗ trợ điều khiển đèn trong môi trường mô phỏng và điều khiển thiết bị đèn vật lý thông qua module relay 4 kênh Modbus RTU RS485.
-*   **Dễ dàng mở rộng**: Cấu hình các cử chỉ và hành động tương ứng thông qua file `hand_gesture.yaml`, cho phép dễ dàng thêm hoặc chỉnh sửa các cử chỉ mới.
-*   **Thu thập dữ liệu tự động**: Công cụ `generate_landmark_data.py` giúp thu thập dữ liệu cử chỉ tay một cách hiệu quả để huấn luyện mô hình.
+*   **Real-time Hand Gesture Recognition**: Utilizes MediaPipe Gesture Recognizer to detect and extract hand landmarks from a webcam feed.
+*   **Deep Learning Model**: An MLP (Multi-Layer Perceptron) model is trained to classify hand gestures into specific light control actions.
+*   **Flexible Light Control**: Supports light control in simulated environments and physical lighting devices via a 4-channel Modbus RTU RS485 relay module.
+*   **Easy Extensibility**: Gesture and corresponding action configurations are defined in the `hand_gesture.yaml` file, allowing for easy addition or modification of new gestures.
+*   **Automated Data Collection**: The `generate_landmark_data.py` tool helps efficiently collect hand gesture landmark data for model training.
 
-## Cấu trúc dự án
+## Project Structure
 
-Dự án được tổ chức với các thư mục và file chính sau:
+The project is organized with the following main directories and files:
 
 ```
 Light-Controlling-Using-Hand-Gestures/
-├── data/                       # Chứa các file CSV dữ liệu landmarks (train, val, test)
-├── img/                        # Chứa các hình ảnh minh họa cho README
-├── models/                     # Chứa mô hình học sâu đã huấn luyện
-├── sign_imgs/                  # Chứa hình ảnh mẫu của các cử chỉ
-├── .gitignore                  # Các file và thư mục bỏ qua khi commit Git
-├── Light Controlling Using Hand Gestures.pdf # Tài liệu hướng dẫn chi tiết dự án
-├── README.md                   # File README của dự án
-├── controller.py               # Xử lý logic điều khiển đèn (giao tiếp với relay)
-├── detect_simulation.py        # Mô phỏng nhận diện cử chỉ và điều khiển đèn
-├── generate_landmark_data.py   # Script thu thập dữ liệu landmarks từ cử chỉ tay
-├── hand_gesture.yaml           # Cấu hình các cử chỉ tay và hành động tương ứng
-├── model.py                    # Định nghĩa kiến trúc mô hình học sâu
-├── requirements.txt            # Danh sách các thư viện Python cần thiết
-├── train.py                    # Script huấn luyện mô hình học sâu
-└── utils.py                    # Các hàm tiện ích chung
+├── data/                       # Contains CSV files for landmark data (train, val, test)
+├── img/                        # Contains illustrative images for README
+├── models/                     # Contains the trained deep learning model
+├── sign_imgs/                  # Contains sample images of gestures
+├── .gitignore                  # Files and directories to ignore in Git commits
+├── Light Controlling Using Hand Gestures.pdf # Detailed project guide document
+├── README.md                   # Project README file
+├── controller.py               # Handles light control logic (interacts with relay)
+├── detect_simulation.py        # Simulates gesture recognition and light control
+├── generate_landmark_data.py   # Script for collecting hand landmark data from gestures
+├── hand_gesture.yaml           # Configuration for hand gestures and corresponding actions
+├── model.py                    # Defines the deep learning model architecture
+├── requirements.txt            # List of required Python libraries
+├── train.py                    # Script for training the deep learning model
+└── utils.py                    # General utility functions
 ```
 
-## Cài đặt
+## Installation
 
-Để cài đặt và chạy dự án, bạn cần thực hiện các bước sau:
+To install and run the project, follow these steps:
 
-### 1. Môi trường Python
+### 1. Python Environment
 
-Chúng tôi khuyến nghị sử dụng `conda` để tạo môi trường ảo với Python 3.10:
+We recommend using `conda` to create a virtual environment with Python 3.10:
 
 ```bash
 conda create -n gesture_env python=3.10.0
 conda activate gesture_env
 ```
 
-### 2. Cài đặt thư viện
+### 2. Install Libraries
 
-Sau khi kích hoạt môi trường, cài đặt các thư viện cần thiết từ `requirements.txt`:
+After activating the environment, install the necessary libraries from `requirements.txt`:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Sử dụng
+## Usage
 
-### 1. Cấu hình cử chỉ
+### 1. Gesture Configuration
 
-File `hand_gesture.yaml` định nghĩa các cử chỉ tay và hành động điều khiển đèn tương ứng. Bạn có thể chỉnh sửa file này để thêm hoặc thay đổi các cử chỉ:
+The `hand_gesture.yaml` file defines hand gestures and their corresponding light control actions. You can edit this file to add or modify gestures:
 
 ```yaml
 gestures:
@@ -71,84 +71,85 @@ gestures:
   4: "turn_on"
 ```
 
-### 2. Thu thập dữ liệu cử chỉ
+### 2. Gesture Data Collection
 
-Sử dụng `generate_landmark_data.py` để thu thập dữ liệu landmarks cho các cử chỉ tay. Dữ liệu này sẽ được sử dụng để huấn luyện mô hình.
+Use `generate_landmark_data.py` to collect landmark data for hand gestures. This data will be used to train the model.
 
 ```bash
 python generate_landmark_data.py
 ```
 
-**Hướng dẫn thu thập dữ liệu:**
+**Data Collection Guide:**
 
-*   Chương trình sẽ tự động tạo các file `landmark_train.csv`, `landmark_val.csv`, `landmark_test.csv` trong thư mục `data/`.
-*   Khi chương trình chạy, bạn sẽ thấy cửa sổ webcam. Nhấn phím tương ứng với class cử chỉ bạn muốn ghi (ví dụ: 'a' cho class 0, 'b' cho class 1, v.v.).
-*   Thực hiện cử chỉ trước camera. Dữ liệu sẽ được ghi lại liên tục.
-*   Nhấn lại phím đã chọn để dừng ghi dữ liệu cho cử chỉ đó.
-*   Lặp lại quá trình cho các cử chỉ khác. Sau khi hoàn tất tất cả các class, nhấn 'q' để thoát chương trình.
+*   The program will automatically create `landmark_train.csv`, `landmark_val.csv`, `landmark_test.csv` files in the `data/` directory.
+*   When the program runs, you will see a webcam window. Press the key corresponding to the gesture class you want to record (e.g., 'a' for class 0, 'b' for class 1, etc.).
+*   Perform the gesture in front of the camera. Data will be continuously recorded.
+*   Press the selected key again to stop recording data for that gesture.
+*   Repeat the process for other gestures. After completing all classes, press 'q' to exit the program.
 
-### 3. Huấn luyện mô hình
+### 3. Model Training
 
-Sau khi có dữ liệu, bạn có thể huấn luyện mô hình phân loại cử chỉ bằng cách chạy:
+Once you have the data, you can train the gesture classification model by running:
 
 ```bash
 python train.py
 ```
 
-Mô hình đã huấn luyện sẽ được lưu trong thư mục `models/`.
+The trained model will be saved in the `models/` directory.
 
-### 4. Điều khiển đèn (Mô phỏng)
+### 4. Light Control (Simulation)
 
-Để chạy mô phỏng điều khiển đèn bằng cử chỉ tay, sử dụng:
+To run the simulated light control using hand gestures, use:
 
 ```bash
 python detect_simulation.py
 ```
 
-Chương trình sẽ sử dụng webcam để nhận diện cử chỉ của bạn và hiển thị hành động điều khiển đèn tương ứng trên màn hình.
+The program will use your webcam to recognize your gestures and display the corresponding light control actions on the screen.
 
-### 5. Điều khiển đèn (Thực tế - IoT)
+### 5. Light Control (Physical - IoT)
 
-Để điều khiển đèn vật lý, bạn cần module relay 4 kênh Modbus RTU RS485 và bộ chuyển đổi USB sang RS485. Kết nối các thiết bị theo sơ đồ và chạy:
+To control physical lights, you will need a 4-channel Modbus RTU RS485 relay module and a USB to RS485 converter. Connect the devices according to the diagram and run:
 
 ```bash
 python controller.py
 ```
 
-**Lưu ý**: Đảm bảo rằng cổng COM và địa chỉ Modbus trong `controller.py` được cấu hình chính xác để phù hợp với thiết lập phần cứng của bạn.
+**Note**: Ensure that the COM port and Modbus address in `controller.py` are correctly configured to match your hardware setup.
 
-## Cử chỉ và Hành động
+## Gestures and Actions
 
-Bảng dưới đây mô tả các cử chỉ tay được định nghĩa và hành động điều khiển đèn tương ứng:
+The table below describes the defined hand gestures and their corresponding light control actions:
 
-| Class | Hành động           | Cử chỉ tay                                    |
+| Class | Action              | Hand Gesture                                  |
 |-------|---------------------|-----------------------------------------------|
-| 0     | Tắt tất cả đèn      | ![Turn Off Gesture](./sign_imgs/turn_off.jpg) |
-| 1     | Bật đèn 1           | ![Light 1 Gesture](./sign_imgs/light1.jpg)          |
-| 2     | Bật đèn 2           | ![Light 2 Gesture](./sign_imgs/light2.jpg)          |
-| 3     | Bật đèn 3           | ![Light 3 Gesture](./sign_imgs/light3.jpg)          |
-| 4     | Bật tất cả đèn      | ![Turn On Gesture](./sign_imgs/turn_on.jpg)         |
+| 0     | Turn All Lights Off | ![Turn Off Gesture](./img/turn_off.jpg)       |
+| 1     | Turn Light 1 On     | ![Light 1 Gesture](./img/light1.jpg)          |
+| 2     | Turn Light 2 On     | ![Light 2 Gesture](./img/light2.jpg)          |
+| 3     | Turn Light 3 On     | ![Light 3 Gesture](./img/light3.jpg)          |
+| 4     | Turn All Lights On  | ![Turn On Gesture](./img/turn_on.jpg)         |
 
-## Thiết bị phần cứng
+## Hardware Devices
 
-Để triển khai hệ thống điều khiển đèn vật lý, bạn cần các thiết bị sau:
+To implement the physical light control system, you will need the following devices:
 
-*   **Module Relay 4 kênh Modbus RTU RS485**:
+*   **4-Channel Modbus RTU RS485 Relay Module**:
 
     ![4-Channel Relay Module Modbus RTU RS485](./img/4-Channel_Relay_Module_Modbus_RTU_RS485.jpeg)
-*   **Bộ chuyển đổi USB sang RS485**: 
+*   **USB to RS485 Converter**:
 
     ![USB-RS485 and Lamp Setup for Modbus Relay Module](./img/USB-RS485_and_Lamp_Setup_for_Modbus_Relay_Module.jpeg)
-*   **Đèn và các thiết bị điện khác** (tùy chọn).
+*   **Lights and other electrical devices** (optional).
 
-## Quy trình thực hiện dự án
+## Project Implementation Process
 
-Quy trình thực hiện dự án được chia thành ba bước chính:
+The project implementation process is divided into three main steps:
 
 ![Project Implementation Steps](./img/project_implementation_steps.jpeg)
 
-*   **Bước 0 (Chuẩn bị dữ liệu)**: Thu thập dữ liệu cử chỉ tay bằng MediaPipe Gesture Recognizer và lưu vào các file CSV.
-*   **Bước 1 (Huấn luyện mô hình)**: Xây dựng và huấn luyện mô hình MLP để phân loại cử chỉ.
-*   **Bước 2 (Triển khai hệ thống)**: Nhận diện cử chỉ thời gian thực và điều khiển đèn.
+*   **Step 0 (Data Preparation)**: Collect hand gesture data using MediaPipe Gesture Recognizer and save it to CSV files.
+*   **Step 1 (Model Training)**: Build and train an MLP model for gesture classification.
+*   **Step 2 (System Deployment)**: Real-time gesture recognition and light control.
+
 
 
